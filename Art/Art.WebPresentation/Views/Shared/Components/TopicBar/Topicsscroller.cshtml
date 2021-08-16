@@ -1,0 +1,91 @@
+﻿@model IEnumerable<Art.WebPresentation.Models.TopicsViewModel>
+
+@{
+    ViewData["Title"] = "Topics";
+}
+@*<div class="container">
+        <div class="nav-scroller py-1 mb-2">
+            <nav class="nav d-flex justify-content-between">
+                <a class="p-2 text-muted" href=@Url.Action("Artikles", "Article", null, null)>Последнее</a>
+                @foreach (var item in Model)
+                {
+
+                    <a class="p-2 text-muted" href=@Url.Action("GetTopicArticles", "Topic", item.TopicId, null)>@item.Name</a>
+                }
+            </nav>
+        </div>
+    </div>*@
+
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd">
+    @*<a class="navbar-brand" href=@Url.Action("Artikles", "Articles", null, null)>Последнее</a>*@
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto ">
+            @foreach (var item in Model)
+            {
+
+                if (item.TopicId == ViewBag.ActiveTopicId)
+                {
+                    <li class="nav-item">
+                        <a class="nav-link active" href=@Url.Action("GetTopicArticles", "Article", new { topic = item }, null)><p style="font-family:verdana;"> <em>@item.Name</em></p> </a>
+                    </li>
+                }
+                else
+                {
+                    <li class="nav-item">
+                        <a class="nav-link " href=@Url.Action("GetTopicArticles", "Article", new { topic = item  }, null)><p style="font-family:verdana;"> <em>@item.Name</em></p> </a> @*<p style="font-family:verdana;">*@
+                    </li>
+                }
+            }
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <em style="font-family:verdana;">Все темы</em>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    @foreach (var item in Model)
+                    {
+                        <a class="dropdown-item text-dark" href=@Url.Action("GetTopicArticles", "Topic",new { id = item.TopicId}, null)><p style="font-family:verdana;"> <em>@item.Name</em></p></a>
+                    }
+                </div>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Поиск по сайту">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Искать</button>
+        </form>
+        <partial name="_LoginPartial" />
+    </div>
+</nav>
+
+
+@*<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor03">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Features</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Pricing</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+            </ul>
+            <form class="form-inline">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>*@

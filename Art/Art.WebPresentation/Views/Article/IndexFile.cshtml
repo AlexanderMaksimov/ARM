@@ -1,0 +1,44 @@
+﻿@*@model IEnumerable<PictureViewModel>
+
+@{
+    ViewData["Title"] = "IndexFile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>IndexFile</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FormImage)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FullName)
+            </td>
+            <td>
+                <img width="150" height="150" src="@Url.Action("GetImage", "Artikle", new { item.FullName })" />
+                @Html.Raw("<img style='width:80px; height:60px;' src=\"data:image/jpeg;base64,"
+                    + item.Image + "\" />")
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>*@

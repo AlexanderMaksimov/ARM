@@ -1,0 +1,24 @@
+3. Start Browsersync
+A basic use is to watch all CSS files in the css directory and update connected browsers if a change occurs. Navigate your terminal window to a project and run the appropriate command:
+
+Static sites
+If youТre only using .html files, youТll need to use the server mode. Browsersync will start a mini-server and provide a URL to view your site.
+
+
+browser-sync start --server --files "php/*.php,css/*.css,js/*.js,html/*.html,*.*" 
+
+Dynamic sites
+If youТre already running a local server with PHP or similar, youТll need to use the proxy mode. Browsersync will wrap your vhost with a proxy URL to view your site.
+
+browser-sync start --proxy "myproject.dev" --files "css/*.css"
+
+2
+
+ѕросмотрите документацию. ѕо умолчанию, например, индексный файл проекта может быть index.html, но если он имеет другое им€, вы должны указать его со следующим флагом, указанным в документации:
+
+--index: указать, какой файл следует использовать в качестве страницы индекса
+
+¬ моем случае:
+
+browser-sync start --index"datalayer.html"  --server --files "./*.*"
+я надеюсь, что помог тебе, увидимс€.

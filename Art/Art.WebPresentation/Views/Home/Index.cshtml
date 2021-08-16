@@ -1,0 +1,15 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+    <div class="text-center">
+        <h1 class="display-4">Welcome</h1>
+        <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+        @Html.ActionLink("Index", "Index", "Article")
+        @Html.ActionLink("Artikle", "Artikle", "Article")
+        @Html.ActionLink("ArtiklesL", "Artikles", "Article")
+        @Html.ActionLink("AddFile", "AddFile", "Article")
+        @Html.ActionLink("IndexFile", "IndexFile", "Article")
+
+        @*@Html.RouteLink("Articles3", "Articles", new { action = "Index" })*@
+    </div>
